@@ -1,0 +1,64 @@
+Jawaban :
+1. public abstract double luas();
+
+2. Di kelas Bentuk, method luas adalah abstrak, artinya hanya berupa deklarasi tanpa isi.
+   Di kelas Lingkaran, method luas diimplementasikan untuk menghitung luas lingkaran.
+   Di kelas Tabung, method luas diimplementasikan untuk menghitung luas permukaan tabung.
+
+   - Perbedaannya terletak pada:
+
+   - Bentuk perhitungannya sesuai jenis bentuknya.
+
+   - Kelas Bentuk hanya mendefinisikan kerangka metode, sementara kelas turunan (Lingkaran, Tabung) memberikan implementasi spesifik.
+
+3. - Akan terjadi error pada saat kompilasi karena Tabung adalah kelas konkret (bukan abstrak), dan wajib mengimplementasikan semua method abstrak dari superclass-nya (Bentuk).
+
+   - Untuk menghindari error, kelas Tabung harus dijadikan abstrak juga jika tidak ingin mengimplementasikan method luas.
+
+4. package P11_AbstractInterface;
+
+public class Main {
+	// Method main: titik awal program Java
+    public static void main(String[] args) {
+        // Membuat objek Lingkaran dengan jari-jari 10
+        Bentuk lingkaran = new Lingkaran(10);
+
+        // Membuat objek Tabung dengan jari-jari 10 dan tinggi 5
+        Bentuk tabung = new Tabung(10, 5);
+
+        // Menampilkan data lingkaran: jari-jari dan luasnya
+        System.out.println("== Lingkaran == \n" +
+                "jari2: " + lingkaran.getJari2() + "\n" +   // Memanggil method getJari2() dari Lingkaran
+                "luas: " + lingkaran.luas() + "\n");       // Memanggil method luas() dari Lingkaran
+
+        // Menampilkan data tabung: jari-jari dan luas permukaannya
+        System.out.println("== Tabung == \n" +
+                "jari2: " + tabung.getJari2() + ", " +     // Memanggil method getJari2() dari Tabung
+                "tinggi: " + ((Tabung) tabung).getTinggi() + "\n" + 	// Memanggil method getTinggi() dari Tabung
+                "luas: " + tabung.luas());                 // Memanggil method luas() dari Tabung
+    }
+}
+
+
+5.   <<abstract>>
+           Bentuk
+           --------------
+           # PHI: double
+           # jari2: int
+           --------------
+           + Bentuk(int: jari2)
+           + luas(): double [abstract]
+           + getJari2: int
+           + setJari2(int: jari2)
+                 ▲
+                 |
+       -----------------------------
+       |                           |
+   Lingkaran                     Tabung
+   --------------                ---------------
+                                 - tinggi: int
+   --------------                ---------------
+   + Lingkaran(int: jari2)       + Tabung(int: jari2, int: tinggi)
+   + luas(): double              + luas(): double
+                                 + getTinggi()
+                                 + setTinggi(int: tinggi)
